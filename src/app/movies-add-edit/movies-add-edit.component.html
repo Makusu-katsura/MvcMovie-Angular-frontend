@@ -1,0 +1,58 @@
+<h1>{{actionType}} Movie</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+    <div class="form-group row">
+        <label class=" control-label col-md-12">Title</label>
+        <div class="col-md-12">
+            <input class="form-control" type="text" formControlName="title">
+        </div>
+        <span class="text-danger ml-3" *ngIf="title.invalid && formDir.submitted">
+            Title is required.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="releaseDate">Release Date</label>
+        <div class="col-md-12">
+            <input class="form-control" type="Date" formControlName="releaseDate">
+        </div>
+        <span class="text-danger ml-3" *ngIf="releaseDate.invalid && formDir.submitted">
+            releaseDate is required.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="price">Price</label>
+        <div class="col-md-12">
+            <input class="form-control" type="number" formControlName="price">
+        </div>
+        <span class="text-danger ml-3" *ngIf="price.invalid && formDir.submitted">
+            Price is required.
+        </span>
+    </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="genre">Genre</label>
+            <div class="col-md-12">
+                <input class="form-control" type="text" formControlName="genre">
+            </div>
+            <span class="text-danger ml-3" *ngIf="genre.invalid && formDir.submitted">
+                Genre is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="rating">Rating</label>
+            <div class="col-md-12">
+                <input class="form-control" type="text" formControlName="rating">
+            </div>
+            <span class="text-danger ml-3" *ngIf="rating.invalid && formDir.submitted">
+                Rating is required.
+            </span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success float-right">Save</button>
+            <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+        </div>
+</form>

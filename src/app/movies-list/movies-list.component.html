@@ -1,0 +1,32 @@
+
+<h1>Movies list</h1>
+
+<p *ngIf="!(MoviesList$ | async)"><em>Loading...</em></p>
+<p>
+  <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New Movie</a>
+</p>
+
+<table class="table table-sm table-hover" >
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Release date</th>
+      <th>Price</th>
+      <th>Genre</th>
+      <th>Rating</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Movie of (MoviesList$ | async)">
+      <td><a [routerLink]="['/Movies/', Movie.id]">{{ Movie.title }}</a></td>
+      <td>{{ Movie.releaseDate | date: "dd.MM.y" }}</td>
+      <td>{{ Movie.price| currency: "$" }}</td>
+      <td>{{ Movie.genre}}</td>
+      <td>{{ Movie.rating}}</td>
+      <td><a [routerLink]="['Movies/Edit/', Movie.id]" class="btn btn-primary btn-sm float-right">Edit</a></td>
+      <td><a [routerLink]="" (click)="delete(Movie.id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
